@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ShoppingList from "./ShoppingList";
 import Header from "./Header";
 
-function App() {
+const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  function handleDarkModeClick() {
-    setIsDarkMode((isDarkMode) => !isDarkMode);
-  }
+  const handleDarkModeClick = () => setIsDarkMode((isDarkMode) => !isDarkMode);
 
   return (
     <div className={"App " + (isDarkMode ? "dark" : "light")}>
@@ -15,6 +13,6 @@ function App() {
       <ShoppingList />
     </div>
   );
-}
+};
 
 export default App;

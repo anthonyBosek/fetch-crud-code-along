@@ -1,6 +1,4 @@
-import React from "react";
-
-function Header({ isDarkMode, onDarkModeClick }) {
+const Header = ({ isDarkMode, onDarkModeClick }) => {
   return (
     <header>
       <h2>Shopster</h2>
@@ -9,6 +7,6 @@ function Header({ isDarkMode, onDarkModeClick }) {
       </button>
     </header>
   );
-}
+};
 
 export default Header;

@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function ItemForm() {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("Produce");
+const ItemForm = () => {
+  const [formData, setFormData] = useState({ name: "", category: "Produce" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <form className="NewItem">
@@ -11,8 +15,8 @@ function ItemForm() {
         <input
           type="text"
           name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={formData.name}
+          onChange={handleChange}
         />
       </label>
 
@@ -20,8 +24,8 @@ function ItemForm() {
         Category:
         <select
           name="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          value={formData.category}
+          onChange={handleChange}
         >
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
@@ -32,6 +36,6 @@ function ItemForm() {
       <button type="submit">Add to List</button>
     </form>
   );
-}
+};
 
 export default ItemForm;

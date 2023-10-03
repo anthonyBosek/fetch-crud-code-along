@@ -1,6 +1,4 @@
-import React from "react";
-
-function Filter({ category, onCategoryChange }) {
+const Filter = ({ category, onCategoryChange }) => {
   return (
     <div className="Filter">
       <select
@@ -15,6 +13,6 @@ function Filter({ category, onCategoryChange }) {
       </select>
     </div>
   );
-}
+};
 
 export default Filter;
