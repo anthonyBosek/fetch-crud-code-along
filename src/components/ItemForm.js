@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemForm = () => {
+const ItemForm = ({ onAddItem }) => {
   const [formData, setFormData] = useState({ name: "", category: "Produce" });
 
   const handleChange = (e) => {
@@ -8,8 +8,23 @@ const ItemForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newItem = { ...formData, isInCart: false };
+    fetch("http://localhost:4000/items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newItem),
+    })
+      .then((resp) => resp.json())
+      .then((added) => onAddItem(added))
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <form className="NewItem">
+    <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
         <input
